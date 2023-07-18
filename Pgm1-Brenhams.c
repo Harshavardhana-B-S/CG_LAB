@@ -21,27 +21,30 @@ void dp(int x, int y)
 void dl(int x1, int x2, int y1, int y2)
 {
     int x, y, cx, cy, dx, dy, c1, c2, i, e;
-    dx = x2 - x1;
-    dy = y2 - y1;
 
+    dx = x2 - x1;  // Calculate the change in x-coordinate
+    dy = y2 - y1;  // Calculate the change in y-coordinate
+
+// Make sure dx and dy are positive values
     if (dx < 0)
         dx = -dx;
     
     if (dy < 0)
         dy = -dy;
     
-    cx = 1;
+    cx = 1; // Set the x-axis increment
     
     if (x2 < x1)
         cx = -1;
     
     cy = 1;
     
+    // Determine whether y2 is above or below y1
     if (y2 < y1)
         cy = -1;
     
-    x = x1;
-    y = y1;
+    x = x1;  // Initialize the current x-coordinate
+    y = y1;  // Initialize the current y-coordinate
     
     if (dx > dy)
     {
@@ -58,17 +61,20 @@ void dl(int x1, int x2, int y1, int y2)
         {
             if (e >= 0)
             {
-                y += cy;
-                e += c1;
+                y += cy;  // Move one step vertically
+                e += c1;  // Update the decision parameter
             }
             else
                 e += c2;
-            x += cx;
+
+            x += cx; // Move one step horizontally
+            
             printf("%d\t%d\n", x, y);
+            
             dp(x, y);
         }
     }
-    
+
     else
     {
         printf("%d\t%d\n", x, y);
