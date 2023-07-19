@@ -15,10 +15,13 @@ void tetra(float *a, float *b, float *c, float *d)
 {
     glColor3f(1, 0, 0);
     triangle(a, b, c);
+
     glColor3f(1, 1, 0);
     triangle(a, b, d);
+
     glColor3f(1, 0, 1);
     triangle(a, d, c);
+
     glColor3f(0, 1, 1);
     triangle(b, c, d);
 }
@@ -26,15 +29,19 @@ void tetra(float *a, float *b, float *c, float *d)
 void dt(float *a, float *b, float *c, float *d, int m)
 {
     float mid[6][3];
+
     int j;
+
     if (m > 0)
     {
         for (j = 0; j < 3; j++)
         {
             mid[0][j] = (a[j] + b[j]) / 2;
             mid[1][j] = (a[j] + c[j]) / 2;
+            
             mid[2][j] = (a[j] + d[j]) / 2;
             mid[3][j] = (b[j] + c[j]) / 2;
+            
             mid[4][j] = (b[j] + d[j]) / 2;
             mid[5][j] = (c[j] + d[j]) / 2;
         }
@@ -50,9 +57,11 @@ void dt(float *a, float *b, float *c, float *d, int m)
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
     glBegin(GL_TRIANGLES);
     dt(v[0], v[1], v[2], v[3], m);
     glEnd();
+    
     glFlush();
 }
 
@@ -75,6 +84,7 @@ int main(int argc, char **argv)
     init();
     
     glutDisplayFunc(display);
+   
     glEnable(GL_DEPTH_TEST);
     glutMainLoop();
 }
