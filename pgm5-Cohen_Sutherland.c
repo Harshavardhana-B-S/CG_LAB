@@ -14,6 +14,7 @@ float x1, y1, x2, y2;
 int compute(float x, float y)
 {
     int code = 0;
+    
     if (y > ymax)
         code = top;
     else if (y < ymin)
@@ -22,6 +23,7 @@ int compute(float x, float y)
         code = right;
     else if (x < xmin)
         code = left;
+
     return code;
 }
 
@@ -161,7 +163,7 @@ int main(int argc, char  rgv)
     glutDisplayFunc(display);
 
     minit();
-    
+
     glutMainLoop();
     return 0;
 }
